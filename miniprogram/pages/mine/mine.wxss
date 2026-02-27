@@ -1,0 +1,58 @@
+/* 用户信息 */
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.nickname {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+/* 功能列表 */
+.func-list {
+  margin-bottom: 20rpx;
+}
+.func-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eee;
+  font-size: 30rpx;
+}
+.func-item:last-child {
+  border-bottom: none;
+}
+.arrow-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+/* 收藏/历史任务项 */
+.task-item {
+  padding: 15rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.task-item:last-child {
+  border-bottom: none;
+}
+.task-title {
+  font-size: 28rpx;
+  margin-bottom: 5rpx;
+}
+.task-meta {
+  font-size: 24rpx;
+  color: #666;
+}
+/* 关于我们文本 */
+.about-text {
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: #666;
+}

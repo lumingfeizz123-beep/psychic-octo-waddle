@@ -1,0 +1,79 @@
+<view class="container">
+  <!-- 基础信息 -->
+  <view class="card basic-info">
+    <text class="title">{{task.title}}</text>
+    <view class="meta-row">
+      <text>适合人群：{{task.suitable}}</text>
+      <text>操作难度：{{task.difficulty}}</text>
+    </view>
+    <view class="meta-row">
+      <text>预计收益：{{task.income}}</text>
+      <text>{{task.isFree ? '免费' : '付费'}}</text>
+    </view>
+    <text class="tip">⚠️ 安全提示：任何要求交费用的都是骗局！</text>
+  </view>
+
+  <!-- 操作步骤 -->
+  <view class="card steps">
+    <text class="title">操作步骤</text>
+    <view class="step-item" wx:for="{{task.steps}}" wx:key="index">
+      <view class="step-num">{{index + 1}}</view>
+      <text class="step-text">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 关键信息 -->
+  <view class="card key-info">
+    <text class="title">关键信息</text>
+    <text>{{task.keyInfo}}</text>
+    <text class="subtitle">注意事项：{{task.notice}}</text>
+  </view>
+
+  <!-- 互动按钮 -->
+  <view class="card action-bar">
+    <button 
+      class="action-btn"
+      bindtap="toggleCollect"
+    >
+      <image src="/images/collect.png" class="action-icon"></image>
+      <text>{{isCollected ? '取消收藏' : '收藏'}}</text>
+    </button>
+    <button 
+      class="action-btn"
+      bindtap="shareTask"
+    >
+      <image src="/images/share.png" class="action-icon"></image>
+      <text>分享</text>
+    </button>
+    <button 
+      class="action-btn"
+      bindtap="reportTask"
+    >
+      <image src="/images/report.png" class="action-icon"></image>
+      <text>举报</text>
+    </button>
+  </view>
+
+  <!-- 评论区 -->
+  <view class="card comments">
+    <text class="title">用户评论</text>
+    <view wx:if="{{task.comments.length === 0}}">
+      <text class="empty">暂无评论，快来抢沙发！</text>
+    </view>
+    <view wx:else>
+      <view class="comment-item" wx:for="{{task.comments}}" wx:key="id">
+        <text class="comment-content">{{item.content}}</text>
+        <text class="comment-time">{{item.time}}</text>
+      </view>
+    </view>
+    <!-- 发表评论 -->
+    <view class="comment-input">
+      <textarea 
+        placeholder="请输入你的评论（比如“亲测有效”“已失效”）"
+        class="input"
+        bindinput="inputComment"
+      ></textarea>
+      <button class="btn" bindtap="submitComment">发布评论</button>
+    </view>
+  </view>
+</view>

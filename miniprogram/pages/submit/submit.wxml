@@ -1,0 +1,86 @@
+<view class="container">
+  <form bindsubmit="submitForm">
+    <!-- 基础信息 -->
+    <view class="card">
+      <text class="title">基础信息</text>
+      <input 
+        name="title"
+        placeholder="请输入项目名称（如：XXAPP注册领红包）"
+        class="input"
+        required
+      ></input>
+      <picker 
+        name="categoryId"
+        mode="selector"
+        range="{{categories}}"
+        range-key="name"
+        placeholder="请选择分类"
+      >
+        <view class="input">
+          {{selectedCategory || '请选择分类'}}
+        </view>
+      </picker>
+      <input 
+        name="suitable"
+        placeholder="请输入适合人群（如：所有人/网购用户）"
+        class="input"
+        required
+      ></input>
+      <picker 
+        name="difficulty"
+        mode="selector"
+        range="{{difficultyList}}"
+      >
+        <view class="input">
+          {{selectedDifficulty || '请选择操作难度'}}
+        </view>
+      </picker>
+      <input 
+        name="income"
+        placeholder="请输入预计收益（如：5元/50元券）"
+        class="input"
+        required
+      ></input>
+      <radio-group name="isFree">
+        <label class="radio-item">
+          <radio value="true" checked/>免费
+        </label>
+        <label class="radio-item">
+          <radio value="false"/>付费
+        </label>
+      </radio-group>
+    </view>
+
+    <!-- 操作步骤 -->
+    <view class="card">
+      <text class="title">操作步骤</text>
+      <textarea 
+        name="steps"
+        placeholder="请输入操作步骤，用换行分隔（如：1.打开XXAPP\n2.点击XX）"
+        class="input"
+        style="height: 200rpx;"
+        required
+      ></textarea>
+    </view>
+
+    <!-- 关键信息 -->
+    <view class="card">
+      <text class="title">关键信息</text>
+      <input 
+        name="keyInfo"
+        placeholder="请输入入口链接/二维码/有效期等关键信息"
+        class="input"
+        required
+      ></input>
+      <input 
+        name="notice"
+        placeholder="请输入注意事项（如：仅限新用户/无需充值）"
+        class="input"
+        required
+      ></input>
+    </view>
+
+    <!-- 提交按钮 -->
+    <button form-type="submit" class="btn">提交投稿</button>
+  </form>
+</view>

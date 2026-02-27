@@ -1,0 +1,82 @@
+<view class="container">
+  <!-- 公告栏 -->
+  <view class="card notice-bar">
+    <text style="color:#f44336;">⚠️ 防骗提醒：任何要求交押金/垫付的都是骗局！</text>
+  </view>
+
+  <!-- 快捷分类入口 -->
+  <view class="card category-entry">
+    <text class="title">快速分类</text>
+    <view class="category-grid">
+      <view 
+        class="category-item" 
+        wx:for="{{categories}}" 
+        wx:key="id"
+        bindtap="goToCategory"
+        data-categoryid="{{item.id}}"
+      >
+        <image src="{{item.icon}}" class="category-icon"></image>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 排序切换 -->
+  <view class="card sort-bar">
+    <button 
+      class="sort-btn {{sortType === 'new' ? 'active' : ''}}"
+      bindtap="changeSort"
+      data-type="new"
+    >最新</button>
+    <button 
+      class="sort-btn {{sortType === 'hot' ? 'active' : ''}}"
+      bindtap="changeSort"
+      data-type="hot"
+    >最热</button>
+  </view>
+
+  <!-- 置顶区 -->
+  <view class="card top-area" wx:if="{{topTasks.length > 0}}">
+    <text class="title">官方推荐（高可靠）</text>
+    <view class="task-item" wx:for="{{topTasks}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <view class="task-top-tag">置顶</view>
+      <view class="task-info">
+        <text class="task-title">{{item.title}}</text>
+        <view class="task-meta">
+          <text>收益：{{item.income}}</text>
+          <text>难度：{{item.difficulty}}</text>
+          <text>{{item.time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 信息流 -->
+  <view class="card task-list">
+    <text class="title">全部信息</text>
+    <view wx:if="{{loading}}">
+      <text class="loading">加载中...</text>
+    </view>
+    <view wx:else if="{{normalTasks.length === 0}}">
+      <text class="empty">暂无相关信息</text>
+    </view>
+    <view wx:else>
+      <view 
+        class="task-item" 
+        wx:for="{{normalTasks}}" 
+        wx:key="id"
+        bindtap="goToDetail"
+        data-id="{{item.id}}"
+      >
+        <view class="task-info">
+          <text class="task-title">{{item.title}}</text>
+          <view class="task-meta">
+            <text>收益：{{item.income}}</text>
+            <text>难度：{{item.difficulty}}</text>
+            <text>{{item.time}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

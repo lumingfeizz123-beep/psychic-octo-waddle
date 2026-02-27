@@ -1,0 +1,20 @@
+<view class="container">
+  <form bindsubmit="submitFeedback">
+    <view class="card">
+      <text class="title">意见反馈</text>
+      <textarea 
+        name="content"
+        placeholder="请输入你的建议、投诉或问题描述"
+        class="input"
+        style="height: 300rpx;"
+        required
+      ></textarea>
+      <input 
+        name="contact"
+        placeholder="请输入你的联系方式（选填，方便我们回复）"
+        class="input"
+      ></input>
+    </view>
+    <button form-type="submit" class="btn">提交反馈</button>
+  </form>
+</view>

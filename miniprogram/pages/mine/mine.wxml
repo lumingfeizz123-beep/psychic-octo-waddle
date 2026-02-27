@@ -1,0 +1,93 @@
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="card user-info" wx:if="{{userInfo}}">
+    <image src="{{userInfo.avatarUrl}}" class="avatar"></image>
+    <text class="nickname">{{userInfo.nickName}}</text>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="card func-list">
+    <view class="func-item" bindtap="goToCollect">
+      <text>我的收藏</text>
+      <image src="/images/arrow.png" class="arrow-icon"></image>
+    </view>
+    <view class="func-item" bindtap="goToHistory">
+      <text>浏览历史</text>
+      <image src="/images/arrow.png" class="arrow-icon"></image>
+    </view>
+    <view class="func-item" bindtap="goToSubmit">
+      <text>投稿入口</text>
+      <image src="/images/arrow.png" class="arrow-icon"></image>
+    </view>
+    <view class="func-item" bindtap="goToFeedback">
+      <text>意见反馈</text>
+      <image src="/images/arrow.png" class="arrow-icon"></image>
+    </view>
+    <view class="func-item" bindtap="showAbout">
+      <text>关于我们</text>
+      <image src="/images/arrow.png" class="arrow-icon"></image>
+    </view>
+  </view>
+
+  <!-- 我的收藏（弹窗） -->
+  <modal 
+    title="我的收藏"
+    show="{{showCollect}}"
+    cancelText="关闭"
+    bindcancel="hideCollect"
+  >
+    <view wx:if="{{collectList.length === 0}}">
+      <text class="empty">暂无收藏的信息</text>
+    </view>
+    <view wx:else>
+      <view 
+        class="task-item" 
+        wx:for="{{collectList}}" 
+        wx:key="id"
+        bindtap="goToDetail"
+        data-id="{{item.id}}"
+      >
+        <text class="task-title">{{item.title}}</text>
+        <text class="task-meta">收益：{{item.income}}</text>
+      </view>
+    </view>
+  </modal>
+
+  <!-- 浏览历史（弹窗） -->
+  <modal 
+    title="浏览历史"
+    show="{{showHistory}}"
+    cancelText="关闭"
+    bindcancel="hideHistory"
+  >
+    <view wx:if="{{historyList.length === 0}}">
+      <text class="empty">暂无浏览历史</text>
+    </view>
+    <view wx:else>
+      <view 
+        class="task-item" 
+        wx:for="{{historyList}}" 
+        wx:key="id"
+        bindtap="goToDetail"
+        data-id="{{item.id}}"
+      >
+        <text class="task-title">{{item.title}}</text>
+        <text class="task-meta">收益：{{item.income}}</text>
+      </view>
+    </view>
+  </modal>
+
+  <!-- 关于我们（弹窗） -->
+  <modal 
+    title="关于我们"
+    show="{{showAbout}}"
+    cancelText="关闭"
+    bindcancel="hideAbout"
+  >
+    <text class="about-text">
+      本平台为副业信息分享平台，所有信息均由用户投稿或网络收集，仅供参考。
+      \n免责声明：本平台不承担因使用信息产生的任何损失，请勿相信任何付费/垫付类信息，谨防诈骗。
+      \n联系方式：contact@example.com
+    </text>
+  </modal>
+</view>

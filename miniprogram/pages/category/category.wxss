@@ -1,0 +1,42 @@
+/* 分类列表 */
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.category-item {
+  width: 30%;
+  text-align: center;
+  padding: 15rpx;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+}
+.category-item.active {
+  background-color: #e8f5e9;
+  border: 1px solid #4CAF50;
+}
+.category-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 10rpx;
+}
+/* 任务项（复用首页样式） */
+.task-item {
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.task-item:last-child {
+  border-bottom: none;
+}
+.task-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #666;
+}

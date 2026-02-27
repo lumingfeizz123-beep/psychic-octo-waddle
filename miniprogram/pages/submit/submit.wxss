@@ -1,0 +1,7 @@
+/* 单选框样式 */
+.radio-item {
+  display: inline-block;
+  margin-right: 30rpx;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
